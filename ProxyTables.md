@@ -31,12 +31,14 @@ This is basically all you need for a proxy table to function
 ```lua
 local Proxy = require(Path.To.Proxy.Module)
 local data ={
-    A = 1
+    A = 1,
+    Hao = 2
 }
 local ProxyTable = Proxy.new(data)
 
 ProxyTable.A = 2 --> Detected Change at A new Value 2
 ProxyTable.B = 3 --> Detected Change at B new Value 3 
+ProxyTable.Hao = nil --> Detected Change at Hao new Value nil
 ```
 ## Features you can add to your proxy table
 you can also add more features to the proxy table so that the proxy table can act like a normal table. here are some examples:
