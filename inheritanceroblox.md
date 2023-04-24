@@ -21,7 +21,7 @@ Person.__index = function(self,key)
 end
 
 function Person.new(Name,Age,Balance)
-	return setmetatable({Name = Name,Age = Age, Balance = Balance},Person)
+   return setmetatable({Name = Name,Age = Age, Balance = Balance},Person)
 end
 
 function Person.__tostring(self)
@@ -36,7 +36,7 @@ function Person:GetAge()
 end
 
 function Person:GrowUp()
-	self.Age += 1
+    self.Age += 1
 end
 
 return Person
@@ -81,7 +81,7 @@ local Person = require(Path.To.Person.Class)
 Student.__index = Student
 
 function Student.new(Name,Age,Balance,Id)
-	return setmetatable(setmetatable({Name = Name,Age = Age,Balance = Balance,Id = Id},Person),Student)
+   return setmetatable(setmetatable({Name = Name,Age = Age,Balance = Balance,Id = Id},Person),Student)
 end
 ```
 
@@ -102,7 +102,7 @@ function Teacher.__tostring(self)
 end
 
 function Teacher.new(Name,Age,Balance)
-	return setmetatable({Name = Name,Age = Age,Balance = Balance},Teacher)
+    return setmetatable({Name = Name,Age = Age,Balance = Balance},Teacher)
 end
 
 function Teacher:GetPaycheck(Amt)
