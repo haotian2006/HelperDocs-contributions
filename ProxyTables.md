@@ -85,4 +85,4 @@ end)
 Check out this [**link**](https://create.roblox.com/docs/scripting/luau/metatables) for more metamethods
 
 # Conclusion 
-if you think you're going to use RealData as a key name you can name the key to something random so that when you do ProxyTable.RealData = {} it wouldn't override your real data. Anyways thats it for this tutorial, hope this helps 
+if you think you're going to use RealData as a key name you can name the key to something random so that when you do ProxyTable.RealData={} it wouldn't override your real data with an empty table. Anyways thats it for this tutorial, hope this helps 
