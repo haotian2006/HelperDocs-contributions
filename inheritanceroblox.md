@@ -61,7 +61,7 @@ end
 function Student.new(Name,Age,Balance,Id)
     local person = Person.new(Name,Age,Balance)
     person.Id = Id
-	return setmetatable(person,Student)
+    return setmetatable(person,Student)
 end
 
 function Student:PayStudentTuition(fees)
