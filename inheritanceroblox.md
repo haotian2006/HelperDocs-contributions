@@ -149,4 +149,4 @@ end
 ```
 
 ## Thanks for reading!
-Thats pretty much it for this method of inheritance. if you have any more questions you can ask in #scripting-help or if you have any more suggesting you can send me a dm (@Haotian2006#3314)
+Thats pretty much it for this method of inheritance. if you have any more questions you can ask in #scripting-help or if you have any more suggestions you can send me a dm (@Haotian2006#3314)
