@@ -7,7 +7,7 @@ Before reading this tutorial, you should know about metatables. An explanation o
 Inheritance is used mainly in oop based languages that allow one class to inherit the properties and methods from another class. 
 
 *do note that there are a few ways of doing inheritance in lua(u) and this is one of them
-## Uses cases for Inheritance
+## Setting up Inheritance
 
 Let’s say we have a class called Person Class that is set up like this
 
