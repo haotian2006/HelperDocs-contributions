@@ -155,7 +155,7 @@ end)
 # Cross(other: Vector3): Vector3
 This method returns the cross product of the two vectors 
 
-# Example 
+## Example 
 The blue arrow is the the direction(self), the yellow arrow is the cross(result), the black arrow is the lookVector(other)
 ```lua
 local part1 = script.Parent.Part1 -- blue part
@@ -187,7 +187,7 @@ part2.Changed:Connect(Update)
 # Lerp(goal: Vector3, alpha: number): Vector3
 This method returns a Vector3 that is interpolated to the goal by the alpha or percent.
 
-# How it works
+## How it works
 ```lua
 function Lerp(start,goal,alpha)
 	return start + (goal - start) * alpha
@@ -201,7 +201,7 @@ function Vector3Lerp(start,goal,alpha)
 	)
 end
 ```
-# Use Case
+## Use Case
 you can use it to make parts move smoothly 
 ```lua
 
