@@ -1,5 +1,5 @@
-# Debugging 
-Debugging is a process where you use prints or other methods to find out what is wrong with your code
+# Fixing Errors 
+This section will go over some basics on how to fix or find errors
 
 # Print Debugging 
 This type of debugging can be used in most languages with ways to log code. Print debugging mainly consists of adding print statements to find out what wrong
