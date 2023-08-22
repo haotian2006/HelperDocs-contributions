@@ -118,5 +118,56 @@ RaycastResult{PartB @ -4.82407379, 11.2030563, 18.3839722; normal = 0, 0, -1; ma
 ```
 ![placeholder](https://media.discordapp.net/attachments/1097115140924645376/1143015906289655878/image.png?width=621&height=435)
 
+# Using google 
+When you get an error message that you don't know or understand, what you can do is go to google.com and search for the error message. Usually you will find an devform post that has the same error and the same solution. Another way to help enhance the search is by using "" this tells google to look for that key word. Sometimes you might not get the results you're look for, for example this error
+![placeholder](https://media.discordapp.net/attachments/1097115140924645376/1143422139744137257/image.png?width=552&height=24)
+and when we do a google search we don't get any thing that relates to that
+![hi - hao](https://media.discordapp.net/attachments/1097115140924645376/1143422833259724882/image.png?width=713&height=800)
+so what we can do here is maybe change the wording or adding roblox into the search to help google search better
+![asaada](https://media.discordapp.net/attachments/1097115140924645376/1143423095567298610/image.png?width=767&height=668)
+and there we go.
 # Using roblox debugger
 Another way of debugging is using tools roblox provided such as break points, watch, call stack. But most of the times you won't really be needing this. but if you want you can find out how to use them [here](https://create.roblox.com/docs/studio/debugging).
+
+#Common mistakes 
+This section is just a list of common mistakes people tend to do
+
+## 1.Using starter Gui instead of playergui
+### StarterGui
+StarterGui is a container that is under Game. Its purpose is to act like a container to hold your guis before they are cloned into the PlayerGui. When a player joins roblox will take everything that is currently in StarterGui and clone them into the players PlayerGui.
+https://create.roblox.com/docs/reference/engine/classes/StarterGui
+
+so given a script like the one below, it will **not** make ScreenGui visible because it is modifying a ScreenGui in StarterGui
+ ```lua
+ --LocalScript
+local StarterGui = game.StarterGui 
+local ScreenGui = StarterGui:WaitForChild("ScreenGui")
+ScreenGui.Enabled = true --!! THIS WILL NOT WORK !!
+ ```
+### PlayerGui
+
+PlayerGui is a container that is under the player that joined. Each player will have their own PlayerGui which other players will **not** be able to see. The server will be able to see it but its is **not recommended** to let the server modify anything in PlayerGui. PlayerGui is what the client actually sees.
+https://create.roblox.com/docs/reference/engine/classes/PlayerGui
+
+![hi](https://media.discordapp.net/attachments/1097115140924645376/1143426421381922907/image.png?width=210&height=122)
+
+so to fix the given script above we can do this
+
+ ```lua
+ --LocalScript
+local player = game.Players
+local LocalPlayer = player.LocalPlayer
+local PlayerGui = LocalPlayer.PlayerGui
+local ScreenGui = PlayerGui:WaitForChild("ScreenGui")
+ScreenGui.Enabled = true 
+ ```
+
+ ## 2. LocalScripts in the wrong places
+another common mistake is having LocalScripts in the wrong place such as having a LocalScript in ServerScriptService. LocalScripts run in a client environment such as StarterPlayerScripts, ServerScriptService is on the server
+
+LocalScripts can run in:
+![a](https://media.discordapp.net/attachments/1097115140924645376/1143428730899935252/image.png?width=767&height=251)
+https://create.roblox.com/docs/reference/engine/classes/LocalScript
+
+## 3. Trying to accuses ServerStorage from the client
+ServerStorage is a Storage for the server to see not the client. If you want to store something store it in ReplicatedStorage
