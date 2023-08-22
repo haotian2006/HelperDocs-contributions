@@ -165,7 +165,6 @@ ScreenGui.Enabled = true
  ## 2. LocalScripts in the wrong places
 another common mistake is having LocalScripts in the wrong place such as having a LocalScript in ServerScriptService. LocalScripts run in a client environment such as StarterPlayerScripts, ServerScriptService is on the server
 
-LocalScripts can run in:
 ![a](https://media.discordapp.net/attachments/1097115140924645376/1143428730899935252/image.png?width=767&height=251)
 https://create.roblox.com/docs/reference/engine/classes/LocalScript
 
