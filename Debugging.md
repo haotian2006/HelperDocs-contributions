@@ -129,7 +129,7 @@ and there we go.
 # Using roblox debugger
 Another way of debugging is using tools roblox provided such as break points, watch, call stack. But most of the times you won't really be needing this. but if you want you can find out how to use them [here](https://create.roblox.com/docs/studio/debugging).
 
-#Common mistakes 
+# Common mistakes 
 This section is just a list of common mistakes people tend to do
 
 ## 1.Using starter Gui instead of playergui
