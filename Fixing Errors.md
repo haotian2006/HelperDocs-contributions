@@ -248,7 +248,12 @@ end)
                 end
             end)
         end
-        if count == amt then return end -- if everyone's data has already been saved
+        if count == amt then return end -- if everyone's data has already been saved there is no need to yield
         coroutine.yield() -- yields the thread
     end)
     ```
+
+# Conclusion  
+Hope this helps if you have any more question you can ask in scripting-help. Anyways Good luck out there and don't get joe tagged.
+
+![joe](https://media.discordapp.net/attachments/895151830345084949/1129887795138277496/togif.gif?width=360&height=96)
