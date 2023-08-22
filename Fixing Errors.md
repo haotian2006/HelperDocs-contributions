@@ -221,7 +221,8 @@ end)
         local amt = #players -- how many players needs to be saved
         local count = 0 -- how many players has been saved
         for _,Player in players do
-            task.spawn(function()
+            task.spawn(function() 
+            -- makes it so that everyone save at the same time instead of 1 by 1
                 save(Player)
                 count += 1
                 -- when player is done saving increase
@@ -239,6 +240,7 @@ end)
         local count = 0 -- how many players has been saved
         for _,Player in players do
             task.spawn(function()
+            -- makes it so that everyone save at the same time instead of 1 by 1
                 save(Player)
                 count += 1
                 -- when player is done saving increase
