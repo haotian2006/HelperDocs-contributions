@@ -168,5 +168,87 @@ another common mistake is having LocalScripts in the wrong place such as having 
 ![a](https://media.discordapp.net/attachments/1097115140924645376/1143428730899935252/image.png?width=767&height=251)
 https://create.roblox.com/docs/reference/engine/classes/LocalScript
 
-## 3. Trying to accuses ServerStorage from the client
+## 3. Trying to access ServerStorage from the client
 ServerStorage is a Storage for the server to see not the client. If you want to store something store it in ReplicatedStorage
+
+## 4. Not having a BindToClose in their DataStoreSaving script
+A very common mistake people tend to make is not having an BindToClose in their Datastore script
+
+Here is an example script:
+```lua
+local dss =game:GetService("DataStoreService")
+local MyDs = dss:GetDataStore("MyStore")
+
+local function save(player)
+    MyDs:SetAsync(player.UserId,"your data")
+end
+
+game.Players.PlayerRemoving(save)
+```
+This will work, but will only work sometimes, this is because when the last person leaves roblox doesn't care if a script is still running or not. To fix this you can use a [BindToClose](https://create.roblox.com/docs/reference/engine/classes/DataModel#BindToClose). What a BindToClose does is it forces roblox's server or studio to wait until the function inside of it is done running (30 seconds max) then tell the server to close.
+
+Heres how we can implement it:
+```lua
+local dss =game:GetService("DataStoreService")
+local MyDs = dss:GetDataStore("MyStore")
+
+local function save(player)
+    MyDs:SetAsync(player.UserId,"your data")
+end
+
+game.Players.PlayerRemoving(save)
+
+game:BindToClose(function()
+    for _,Player in game.Players:GetPlayers() do
+        save(Player)
+    end
+end)
+```
+
+!!! warning 
+    Another mistake people tend to do is using spawn/task.spawn inside of the BindToClose
+    ```lua
+    game:BindToClose(function()
+        for _,Player in game.Players:GetPlayers() do
+            task.spawn(save,Player)
+        end
+    end)
+    ```
+    this is wrong because task.spawn makes it so that the the saving process doesn't yield, but we need it to yield. If you want to do it correctly you can do it like this
+    ```lua
+    game:BindToClose(function()
+        local players = game.Players:GetPlayers()
+        local amt = #players -- how many players needs to be saved
+        local count = 0 -- how many players has been saved
+        for _,Player in players do
+            task.spawn(function()
+                save(Player)
+                count += 1
+                -- when player is done saving increase
+            end)
+        end
+        repeat task.wait() until count == amt -- yields until everything is done
+    end)
+    ```
+    or if you want to be fancy
+    ```lua
+    game:BindToClose(function()
+        local players = game.Players:GetPlayers()
+        local thread = coroutine.running() --gets current thread
+        local amt = #players -- how many players needs to be saved
+        local count = 0 -- how many players has been saved
+        for _,Player in players do
+            task.spawn(function()
+                save(Player)
+                count += 1
+                -- when player is done saving increase
+                if count == amt then
+                    coroutine.resume(thread)
+                    -- if its the last player, resume the thread
+                end
+            end)
+        end
+        if count == amt then return end -- if everyone's data has already been saved
+        coroutine.yield() -- yields the thread
+    end)
+    ```
