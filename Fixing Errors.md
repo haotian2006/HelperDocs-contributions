@@ -172,7 +172,7 @@ https://create.roblox.com/docs/reference/engine/classes/LocalScript
 ServerStorage is a Storage for the server to see not the client. If you want to store something store it in ReplicatedStorage
 
 ## 4. Indirect Change
-Indirect Change is when you are changing the variable not the actual value for example:
+Indirect Change is when you are changing the variable not the actual value, for example:
 
 ```lua
 local t = {}
