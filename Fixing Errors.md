@@ -96,7 +96,7 @@ dir.Anchored = true
 dir.Parent = workspace
 ```
 ![placeholder](https://media.discordapp.net/attachments/1097115140924645376/1143015453329989662/image.png?width=767&height=465)
-From this we can infer that direction is indeed wrong and when we look at how direction is define we can see that we did (start-goal) when the proper way is (goal - start)
+From this we can see that direction is indeed wrong and when we look at how direction is defined we can see that we did (start-goal) when the proper way is (goal - start)
 
 So fixing that and running the code will now give the correct results
 ```lua
