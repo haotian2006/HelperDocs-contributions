@@ -171,7 +171,42 @@ https://create.roblox.com/docs/reference/engine/classes/LocalScript
 ## 3. Trying to access ServerStorage from the client
 ServerStorage is a Storage for the server to see not the client. If you want to store something store it in ReplicatedStorage
 
-## 4. Not having a BindToClose in their DataStoreSaving script
+## 4. Indirect Change
+Indirect Change is when you are changing the variable not the actual value for example:
+
+```lua
+local t = {}
+t.Value = 1
+local value = t.Value
+value = 5
+print(t.Value) --> 1
+print(value) -->5
+
+--another example:
+
+local part = workspace.Part
+local position = part.Position
+
+position = Vector3.new(1,2,3)
+-- this is wrong
+```
+The example above are wrong because you are not changing the values but instead the variable.
+
+the proper way to do this is do to:
+```lua
+local t = {}
+t.Value = 1
+t.Value = 5
+print(t.Value) --> 5
+
+--another example:
+
+local part = workspace.Part
+part.Position = Vector3.new(1,2,3)
+```
+
+
+## 5. Not having a BindToClose in their DataStoreSaving script
 A very common mistake people tend to make is not having an BindToClose in their Datastore script
 
 Here is an example script:
@@ -254,6 +289,10 @@ end)
         coroutine.yield() -- yields the thread
     end)
     ```
+## 6. Animations working in Studio but not In game
+Animations only work if the game the animation is owned is the same to fix it you will have to upload the animation to the same game owner or group 
+
+![ani](https://media.discordapp.net/attachments/1097115140924645376/1133659449123410000/togif.gif?width=767&height=367)
 
 # Conclusion  
 Hope this helps if you have any more question you can ask in scripting-help. Anyways Good luck out there and don't get joe tagged.
