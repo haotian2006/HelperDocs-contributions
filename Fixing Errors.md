@@ -2,7 +2,7 @@
 This section will go over some basics on how to fix or find errors
 
 # Print Debugging 
-This type of debugging can be used in most languages with ways to log code. Print debugging mainly consists of adding print statements to find out what wrong
+Print debugging mainly consists of adding print statements to find out what wrong
 
 ## use case
 
@@ -24,9 +24,9 @@ local x = getX()
 local y = getY()
 print("script is running")
 if x >= 3 then
-    print("x passed")
+   print("x check passed")
     if y == 0 then
-        print("y passed")
+       print("y check passed")
         doSomething()
     end
 end
@@ -39,7 +39,8 @@ x passed
 Then you will know that y is not equal to 0
 
 !!! 
-    You don't really need to add all those prints to figure out what wrong for example if you know your code is running you can probably remove the print("script is running")
+    You don't really need to add all those prints to figure out what wrong for example if you know your code is running you can probably remove the print("script is running").
+    You also can just print("X") (or anything that will help) instead of print("x check passed")
 2. printing the variables
 
 ```lua
