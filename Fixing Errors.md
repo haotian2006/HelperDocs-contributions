@@ -119,7 +119,7 @@ RaycastResult{PartB @ -4.82407379, 11.2030563, 18.3839722; normal = 0, 0, -1; ma
 ![placeholder](https://media.discordapp.net/attachments/1097115140924645376/1143015906289655878/image.png?width=621&height=435)
 
 # Using google 
-When you get an error message that you don't know or understand, what you can do is go to google.com and search for the error message. Usually you will find an devform post that has the same error and the same solution. Another way to help enhance the search is by using "" this tells google to look for that key word. Sometimes you might not get the results you're look for, for example this error
+When you get an error message that you don't know or understand, what you can do is go to google.com and search for the error message. Usually you will find an devform post that has the same error and the a solution. Another way to help enhance the search is by using "" this tells google to look for that key word. Sometimes you might not get the results you're look for, for example this error
 ![placeholder](https://media.discordapp.net/attachments/1097115140924645376/1143422139744137257/image.png?width=552&height=24)
 and when we do a google search we don't get any thing that relates to that
 ![hi - hao](https://media.discordapp.net/attachments/1097115140924645376/1143422833259724882/image.png?width=713&height=800)
