@@ -58,7 +58,7 @@ end
 4
 4
 ```
-From this you can tell that y will is 4 not 0 so from this you would most likely look into how y is being assigned which in this case can tell that something must be wrong with the getY function 
+From this you can tell that y is 4 not 0 so from this you would most likely look into how y is being assigned which in this case can tell us that something must be wrong with the getY function 
 
 # visualize debugging
 This type of debugging can be using parts or other methods to visualize the problem this can be used if using prints doesn't really tell you whats wrong 
