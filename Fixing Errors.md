@@ -393,7 +393,7 @@ end)
 Animations only work if the game the animation is owned is the same to fix it you will have to upload the animation to the same game owner or group 
 
 ![ani](https://media.discordapp.net/attachments/1097115140924645376/1133659449123410000/togif.gif?width=767&height=367)
-
+(the green is what will happen)
 # Conclusion  
 Hope this helps if you have any more question you can ask in scripting-help. Anyways Good luck out there and don't get joe tagged.
 
