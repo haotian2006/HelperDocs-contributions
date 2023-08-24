@@ -49,7 +49,8 @@ f(y) -- y is an argument
 to fix this make sure that the 1st argument (or what ever the error says) is being defined correctly
 ###  <span style="color:red"> Unable to cast value to Object </span>
 this means that the value you are trying to send cannot bet convert into the object the function wants. To fix this make sure that the date type is the correct one.
-
+###  <span style="color:red"> Expected ')' (to close '(' at column x), got eof </span>
+This is a syntax error. it means that you either have an extra parentheses or lacking one. To fix this look for where the lines are underlined in red as roblox catches syntax errors before the game is being run.
 # Print Debugging 
 Print debugging mainly consists of adding print statements to find out what wrong this is mainly used if there are no errors showing up in output
 
@@ -167,6 +168,55 @@ dir.Parent = workspace
 RaycastResult{PartB @ -4.82407379, 11.2030563, 18.3839722; normal = 0, 0, -1; material = Plastic} 
 ```
 ![placeholder](https://media.discordapp.net/attachments/1097115140924645376/1143015906289655878/image.png?width=621&height=435)
+# Making your code more readable/ Remaking it
+Sometimes making your code more readable will help with debugging 
+ex:
+given this script it might be a bit annoying to figure out whats wrong 
+
+```lua
+--GOAL: to make the ProximityPrompt enabled set to true if both the flag for
+-- randomTor and LocalTorso is false, otherwise true
+if RandomTor:FindFirstChild("Flag").Value == false then
+    if LocalTorso:FindFirstChild("Flag").Value == false then
+        RandomTor:FindFirstChild("ProximityPrompt").Enabled = true
+    else
+        RandomTor:FindFirstChild("ProximityPrompt").Enabled = false
+    end
+end
+```
+what we can is use variables to make it cleaner
+```lua
+local randomFlag = RandomTor:FindFirstChild("Flag")
+local LocalFlag = LocalTorso:FindFirstChild("Flag")
+local RandomProx = RandomTor:FindFirstChild("ProximityPrompt")
+if not randomFlag.Value then
+    if not LocalFlag.Value then
+       RandomProx.Enabled = true
+    else
+       RandomProx.Enabled = false
+    end
+end
+```
+If you still don't see whats wrong with it what you can do is just plugs values into it and think what the expected results are. The reason this isn't working is because it ignores when randomFlag.Value is true so to fix this we can do:
+```lua
+local randomFlag = RandomTor:FindFirstChild("Flag")
+local LocalFlag = LocalTorso:FindFirstChild("Flag")
+local RandomProx = RandomTor:FindFirstChild("ProximityPrompt")
+if (not randomFlag.Value) and (not LocalFlag.Value) then
+    RandomProx.Enabled = true
+else
+    RandomProx.Enabled = false
+end
+```
+!!!info 
+    for people that really care how much lines their code has you can do
+    ```lua
+    local randomFlag = RandomTor:FindFirstChild("Flag")
+    local LocalFlag = LocalTorso:FindFirstChild("Flag")
+    local RandomProx = RandomTor:FindFirstChild("ProximityPrompt")
+    RandomProx.Enabled =  (not randomFlag.Value) and (not LocalFlag.Value)
+    ```
+    as the condition is just a boolean 
 
 # Using google 
 When you get an error message that you don't know or understand, what you can do is go to google.com and search for the error message. Usually you will find an devform post that has the same error and the a solution. Another way to help enhance the search is by using "" this tells google to look for that key word. Sometimes you might not get the results you're look for, for example this error
