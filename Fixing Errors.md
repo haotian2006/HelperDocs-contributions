@@ -34,7 +34,7 @@ end
 When you run the script and you only see 
 ```
 script is running
-x passed
+x check passed
 ```
 Then you will know that y is not equal to 0
 
