@@ -1,8 +1,57 @@
 # Fixing Errors 
 This section will go over some basics on how to fix or find errors
 
+# Checking Output 
+Usually if your code doesn't run then it might be because be because the code has errored.
+
+To open output you go to View -> Output
+![Alt text](https://media.discordapp.net/attachments/1090554268492247103/1144376169463042178/image.png?width=767&height=127)
+
+!!!info 
+    Another useful tool is the Script Analysis, what is does is show warnings/errors (mainly [syntax](https://www.sciencedirect.com/topics/engineering/syntax-error) related). It is directly below Output
+
+To see if there is an error you will see a message that are red like this one
+![error](https://media.discordapp.net/attachments/1090554268492247103/1144377810933260418/image.png?width=767&height=104)
+
+You can click on the error and it will bring you to the line and script that it errored on 
+
+If clicking on it doesn't lead you to any where and you see this 
+![a](https://media.discordapp.net/attachments/1090554268492247103/1144378615115546724/image.png?width=767&height=103)
+when you hover over it it means that the script it errored in was deleted.
+What you can do is click on the error while in game instead of after stopping and it should lead you to the right script.
+
+## Reading errors messages
+![smtidk](https://media.discordapp.net/attachments/1090554268492247103/1144383368163774474/image.png?width=767&height=182)
+
+<span style="color:Orange">Time of message: </span> When did it error
+<span style="color:Lime">Script Location: </span> What script did it error on and where is the script
+<span style="color:magenta">Line the error is on: </span> What line did it error on
+<span style="color:yellow">Error Message: </span> What is the error
+<span style="color:White">Environment: </span> Did is error on the server, client, or studio
+
+You mainly only need to focus on the Script Location, error line, and the error it self. If its an error you don't understand you can use google to search for the error message. There is a a section below explaining how to do that
+
+## Common Error Messages
+### <span style="color:red"> attempt to perform arithmetic(arithmetic) on number and [type] </span>
+This means you are trying to do and arithmetic on a number an a type you can not do arithmetic on. 
+The only objects you can do arithmetic on is numbers , strings, objects that has arithmetic metamethods (__mul,__add...)
+
+!!!Warning 
+    This also applies to <span style="color:red"> attempt to compare something < number </span> and <span style="color:red"> attempt to concatenate string with something </span>. They either must be types that be compared on concatenated or have the [metatmethods](https://create.roblox.com/docs/luau/metatables#metamethods) that allow them to do it
+###  <span style="color:red"> Argument 1 missing or nil </span>
+This means that one of the argument you sent is nil or empty. arguments are the data you are sending ex.
+```lua
+local function f(x) -- x is a parameter
+    ...
+end
+f(y) -- y is an argument
+```
+to fix this make sure that the 1st argument (or what ever the error says) is being defined correctly
+###  <span style="color:red"> Unable to cast value to Object </span>
+this means that the value you are trying to send cannot bet convert into the object the function wants. To fix this make sure that the date type is the correct one.
+
 # Print Debugging 
-Print debugging mainly consists of adding print statements to find out what wrong
+Print debugging mainly consists of adding print statements to find out what wrong this is mainly used if there are no errors showing up in output
 
 ## use case
 
