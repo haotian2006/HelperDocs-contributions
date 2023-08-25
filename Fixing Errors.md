@@ -27,7 +27,7 @@ What you can do is click on the error while in game instead of after stopping an
 <span style="color:Lime">Script Location: </span> What script did it error on and where is the script
 <span style="color:magenta">Line the error is on: </span> What line did it error on
 <span style="color:yellow">Error Message: </span> What is the error
-<span style="color:White">Environment: </span> Did is error on the server, client, or studio
+<span style="color:White">Environment: </span> is the error on the server, client, or studio
 
 You mainly only need to focus on the Script Location, error line, and the error it self. If its an error you don't understand you can use google to search for the error message. There is a a section below explaining how to do that
 
