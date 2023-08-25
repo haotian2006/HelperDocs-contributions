@@ -32,13 +32,15 @@ What you can do is click on the error while in game instead of after stopping an
 You mainly only need to focus on the Script Location, error line, and the error it self. If its an error you don't understand you can use google to search for the error message. There is a a section below explaining how to do that
 
 ## Common Error Messages
+### <span style="color:red"> [name] is not a valid member of object </span>
+this error shows up when the you try to get an child that does not exist in the object, usually if its to do with the client you can use WaitForChild but if that doesn't work, check your code and make sure the child exists.  
 ### <span style="color:red"> attempt to perform arithmetic(arithmetic) on number and [type] </span>
 This means you are trying to do and arithmetic on a number an a type you can not do arithmetic on. 
 The only objects you can do arithmetic on is numbers , strings, objects that has arithmetic metamethods (__mul,__add...)
 
 !!!Warning 
     This also applies to <span style="color:red"> attempt to compare something < number </span> and <span style="color:red"> attempt to concatenate string with something </span>. They either must be types that be compared on concatenated or have the [metatmethods](https://create.roblox.com/docs/luau/metatables#metamethods) that allow them to do it
-###  <span style="color:red"> Argument 1 missing or nil </span>
+###  <span style="color:red"> Argument [number] missing or nil </span>
 This means that one of the argument you sent is nil or empty. arguments are the data you are sending ex.
 ```lua
 local function f(x) -- x is a parameter
@@ -46,10 +48,10 @@ local function f(x) -- x is a parameter
 end
 f(y) -- y is an argument
 ```
-to fix this make sure that the 1st argument (or what ever the error says) is being defined correctly
+to fix this make sure that the argument is being defined correctly or is the right type
 ###  <span style="color:red"> Unable to cast value to Object </span>
 this means that the value you are trying to send cannot bet convert into the object the function wants. To fix this make sure that the date type is the correct one.
-###  <span style="color:red"> Expected ')' (to close '(' at column x), got eof </span>
+###  <span style="color:red"> Expected ')' (to close '(' at column [number]), got eof </span>
 This is a syntax error. it means that you either have an extra parentheses or lacking one. To fix this look for where the lines are underlined in red as roblox catches syntax errors before the game is being run.
 # Print Debugging 
 Print debugging mainly consists of adding print statements to find out what wrong this is mainly used if there are no errors showing up in output
