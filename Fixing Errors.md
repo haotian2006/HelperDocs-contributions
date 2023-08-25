@@ -2,23 +2,23 @@
 This section will go over some basics on how to fix or find errors
 
 # Checking Output 
-Usually if your code doesn't run then it might be because be because the code has errored.
+Usually, if your code doesn't run then it might be because the code has errored.
 
 To open output you go to View -> Output
 ![Alt text](https://media.discordapp.net/attachments/1090554268492247103/1144376169463042178/image.png?width=767&height=127)
 
 !!!info 
-    Another useful tool is the Script Analysis, what is does is show warnings/errors (mainly [syntax](https://www.sciencedirect.com/topics/engineering/syntax-error) related) while you are editing the script. It is directly below Output
+    Another useful tool is the Script Analysis, what it does is show warnings/errors (mainly [syntax](https://www.sciencedirect.com/topics/engineering/syntax-error) related) while you are editing the script. It is directly below the Output
 
-To see if there is an error you will see a message that are red like this one
+To see if there is an error you will see a message that is red like this one
 ![error](https://media.discordapp.net/attachments/1090554268492247103/1144377810933260418/image.png?width=767&height=104)
 
 You can click on the error and it will bring you to the line and script that it errored on 
 
-If clicking on it doesn't lead you to any where and you see this 
+If clicking on it doesn't lead you anywhere and you see this 
 ![a](https://media.discordapp.net/attachments/1090554268492247103/1144378615115546724/image.png?width=767&height=103)
-when you hover over it it means that the script it errored in was deleted.
-What you can do is click on the error while in game instead of after stopping and it should lead you to the right script.
+When you hover over it it means that the script it errored in was deleted.
+What you can do is click on the error while in the game instead of after stopping and it should lead you to the right script.
 
 ## Reading errors messages
 ![smtidk](https://media.discordapp.net/attachments/1090554268492247103/1144383368163774474/image.png?width=767&height=182)
@@ -29,19 +29,19 @@ What you can do is click on the error while in game instead of after stopping an
 <span style="color:yellow">Error Message: </span> What is the error
 <span style="color:White">Environment: </span> is the error on the server, client, or studio
 
-You mainly only need to focus on the Script Location, error line, and the error it self. If its an error you don't understand you can use google to search for the error message. There is a a section below explaining how to do that
+You mainly only need to focus on the Script Location, error line, and the error itself. If it's an error you don't understand you can use Google to search for the error message. There is a section below explaining how to do that
 
 ## Common Error Messages
 ### <span style="color:red"> [name] is not a valid member of object </span>
-this error shows up when the you try to get an child that does not exist in the object, usually if its to do with the client you can use WaitForChild but if that doesn't work, check your code and make sure the child exists.  
+This error shows up when you try to get a child that does not exist in the object, Usually if its to do with the client you can use WaitForChild but if that doesn't work, check your code and make sure the child exists.  
 ### <span style="color:red"> attempt to perform arithmetic(arithmetic) on number and [type] </span>
-This means you are trying to do and arithmetic on a number an a type you can not do arithmetic on. 
-The only objects you can do arithmetic on is numbers , strings, objects that has arithmetic metamethods (__mul,__add...)
+This means you are trying to do arithmetic on a number and a type you can not do arithmetic on. 
+The only objects you can do arithmetic on are numbers, strings, and objects that have arithmetic metamethods (__mul,__add...)
 
 !!!Warning 
     This also applies to <span style="color:red"> attempt to compare something < number </span> and <span style="color:red"> attempt to concatenate string with something </span>. They either must be types that be compared on concatenated or have the [metatmethods](https://create.roblox.com/docs/luau/metatables#metamethods) that allow them to do it
 ###  <span style="color:red"> Argument [number] missing or nil </span>
-This means that one of the argument you sent is nil or empty. arguments are the data you are sending ex.
+This means that one of the arguments you sent is nil or empty. arguments are the data you are sending ex.
 ```lua
 local function f(x) -- x is a parameter
     ...
@@ -50,15 +50,15 @@ f(y) -- y is an argument
 ```
 to fix this make sure that the argument is being defined correctly or is the right type
 ###  <span style="color:red"> Unable to cast value to Object </span>
-this means that the value you are trying to send cannot bet convert into the object the function wants. To fix this make sure that the date type is the correct one.
+this means that the value you are trying to send cannot be converted into the object the function wants. To fix this make sure that the data type is the correct one.
 ###  <span style="color:red"> Expected ')' (to close '(' at column [number]), got eof </span>
-This is a syntax error. it means that you either have an extra parentheses or lacking one. To fix this look for where the lines are underlined in red as roblox catches syntax errors before the game is being run.
+This is a syntax error. it means that you either have extra parentheses or lack one. To fix this look for where the lines are underlined in red as roblox catches syntax errors before the game is being run.
 # Print Debugging 
-Print debugging mainly consists of adding print statements to find out what wrong this is mainly used if there are no errors showing up in output
+Print debugging mainly consists of adding print statements to find out what is wrong this is mainly used if no errors are showing up in the output
 
 ## use case
 
-lets say we have a script set up like this
+let's say we have a script set up like this
 ```lua
 local x = getX()
 local y = getY()
@@ -91,9 +91,9 @@ x check passed
 Then you will know that y is not equal to 0
 
 !!! 
-    You don't really need to add all those prints to figure out what wrong for example if you know your code is running you can probably remove the print("script is running").
+    You don't really need to add all those prints to figure out what's wrong for example if you know your code is running you can probably remove the print("script is running").
     You also can just print("X") (or anything that will help) instead of print("x check passed")
-2. printing the variables
+2. Printing the variables
 
 ```lua
 local x = getX()
@@ -110,13 +110,13 @@ end
 4
 4
 ```
-From this you can tell that y is 4 not 0 so from this you would most likely look into how y is being assigned which in this case can tell us that something must be wrong with the getY function 
+From this, you can tell that y is 4 not 0 so from this you would most likely look into how y is being assigned which in this case can tell us that something must be wrong with the getY function 
 
 # visualize debugging
-This type of debugging can be using parts or other methods to visualize the problem this can be used if using prints doesn't really tell you whats wrong 
+This type of debugging can be using parts or other methods to visualize the problem this can be used if using prints doesn't really tell you what's wrong 
 
 ## use case
-Lets say we are doing some raycasting but the ray isn't hitting anything 
+Let's say we are doing some raycasting but the ray isn't hitting anything 
 ```lua
 local green = workspace.PartA
 local red = workspace.PartB
@@ -132,7 +132,7 @@ nil
 600.8695068359375, -531.7534790039062, -596.8199462890625
 ```
 
-For beginners you might not see anything wrong with the script and looking at what direction is doesn't really help so what you can do here is create a part that goes in that ray direction like this
+For beginners, you might not see anything wrong with the script and looking at what direction is doesn't really help so what you can do here is create a part that goes in that ray direction like this
 
 ```lua
 local green = workspace.PartA
@@ -173,10 +173,10 @@ RaycastResult{PartB @ -4.82407379, 11.2030563, 18.3839722; normal = 0, 0, -1; ma
 # Making your code more readable/ Remaking it
 Sometimes making your code more readable will help with debugging 
 ex:
-given this script it might be a bit annoying to figure out whats wrong 
+given this script it might be a bit annoying to figure out what wrong 
 
 ```lua
---GOAL: to make the ProximityPrompt enabled set to true if both the flag for
+--GOAL: to make the ProximityPrompt enabled set to true if both the flags for
 -- randomTor and LocalTorso is false, otherwise true
 if RandomTor:FindFirstChild("Flag").Value == false then
     if LocalTorso:FindFirstChild("Flag").Value == false then
@@ -186,7 +186,7 @@ if RandomTor:FindFirstChild("Flag").Value == false then
     end
 end
 ```
-what we can is use variables to make it cleaner
+What we can do is use variables to make it cleaner
 ```lua
 local randomFlag = RandomTor:FindFirstChild("Flag")
 local LocalFlag = LocalTorso:FindFirstChild("Flag")
@@ -199,7 +199,7 @@ if not randomFlag.Value then
     end
 end
 ```
-If you still don't see whats wrong with it what you can do is just plugs values into it and think what the expected results are. The reason this isn't working is because it ignores when randomFlag.Value is true so to fix this we can do:
+If you still don't see what's wrong with it what you can do is just plug values into it and think what the expected results are. The reason this isn't working is because it ignores when randomFlag.Value is true so to fix this we can do:
 ```lua
 local randomFlag = RandomTor:FindFirstChild("Flag")
 local LocalFlag = LocalTorso:FindFirstChild("Flag")
@@ -211,7 +211,7 @@ else
 end
 ```
 !!!info 
-    for people that really care how much lines their code has you can do
+    For people that really care how much lines their code has you can do
     ```lua
     local randomFlag = RandomTor:FindFirstChild("Flag")
     local LocalFlag = LocalTorso:FindFirstChild("Flag")
@@ -221,25 +221,25 @@ end
     as the condition is just a boolean 
 
 # Using google 
-When you get an error message that you don't know or understand, what you can do is go to google.com and search for the error message. Usually you will find an devform post that has the same error and the a solution. Another way to help enhance the search is by using "" this tells google to look for that key word. Sometimes you might not get the results you're look for, for example this error
+When you get an error message that you don't know or understand, what you can do is go to google.com and search for the error message. Usually, you will find a devform post that has the same error and the solution. Another way to help enhance the search is by using "". This tells google to look for that keyword. Sometimes you might not get the results you're looking for, for example, this error
 ![placeholder](https://media.discordapp.net/attachments/1097115140924645376/1143422139744137257/image.png?width=552&height=24)
-and when we do a google search we don't get any thing that relates to that
+and when we do a Google search we don't get anything that relates to that
 ![hi - hao](https://media.discordapp.net/attachments/1097115140924645376/1143422833259724882/image.png?width=713&height=800)
-so what we can do here is maybe change the wording or adding roblox into the search to help google search better
+So what we can do here is maybe change the wording or adding roblox into the search to help Google search better
 ![asaada](https://media.discordapp.net/attachments/1097115140924645376/1143423095567298610/image.png?width=767&height=668)
 and there we go.
 # Using roblox debugger
-Another way of debugging is using tools roblox provided such as break points, watch, call stack. But most of the times you won't really be needing this. but if you want you can find out how to use them [here](https://create.roblox.com/docs/studio/debugging).
+Another way of debugging is using tools roblox provided such as breakpoints, watch, and call stack. But most of the time you won't really be needing this. but if you want you can find out how to use them [here](https://create.roblox.com/docs/studio/debugging).
 
 # Common mistakes 
 This section is just a list of common mistakes people tend to do
 
-## 1.Using starter Gui instead of playergui
+## 1. Using starter Gui instead of playergui
 ### StarterGui
 StarterGui is a container that is under Game. Its purpose is to act like a container to hold your guis before they are cloned into the PlayerGui. When a player joins roblox will take everything that is currently in StarterGui and clone them into the players PlayerGui.
 https://create.roblox.com/docs/reference/engine/classes/StarterGui
 
-so given a script like the one below, it will **not** make ScreenGui visible because it is modifying a ScreenGui in StarterGui
+So given a script like the one below, it will **not** make ScreenGui visible because it is modifying a ScreenGui in StarterGui
  ```lua
  --LocalScript
 local StarterGui = game.StarterGui 
@@ -265,7 +265,7 @@ ScreenGui.Enabled = true
  ```
 
  ## 2. LocalScripts in the wrong places
-another common mistake is having LocalScripts in the wrong place such as having a LocalScript in ServerScriptService. LocalScripts run in a client environment such as StarterPlayerScripts, ServerScriptService is on the server
+Another common mistake is having LocalScripts in the wrong place such as having a LocalScript in ServerScriptService. LocalScripts run in a client environment such as StarterPlayerScripts, ServerScriptService is on the server
 
 ![a](https://media.discordapp.net/attachments/1097115140924645376/1143428730899935252/image.png?width=767&height=251)
 https://create.roblox.com/docs/reference/engine/classes/LocalScript
@@ -274,7 +274,7 @@ https://create.roblox.com/docs/reference/engine/classes/LocalScript
 ServerStorage is a Storage for the server to see not the client. If you want to store something store it in ReplicatedStorage
 
 ## 4. Indirect Change
-Indirect Change is when you are changing the variable not the actual value, for example:
+Indirect Change is when you are changing the variable, not the actual value, for example:
 
 ```lua
 local t = {}
@@ -292,9 +292,9 @@ local position = part.Position
 position = Vector3.new(1,2,3)
 -- this is wrong
 ```
-The example above are wrong because you are not changing the values but instead the variable.
+The example above is wrong because you are not changing the values but instead the variable.
 
-the proper way to do this is do to:
+the proper way to do this is to do:
 ```lua
 local t = {}
 t.Value = 1
@@ -309,7 +309,7 @@ part.Position = Vector3.new(1,2,3)
 
 
 ## 5. Not having a BindToClose in their DataStoreSaving script
-A very common mistake people tend to make is not having an BindToClose in their Datastore script
+A very common mistake people tend to make is not having a BindToClose in their Datastore script
 
 Here is an example script:
 ```lua
@@ -324,7 +324,7 @@ game.Players.PlayerRemoving(save)
 ```
 This will work, but will only work sometimes, this is because when the last person leaves roblox doesn't care if a script is still running or not. To fix this you can use a [BindToClose](https://create.roblox.com/docs/reference/engine/classes/DataModel#BindToClose). What a BindToClose does is it forces roblox's server or studio to wait until the function inside of it is done running (30 seconds max) then tell the server to close.
 
-Heres how we can implement it:
+Heres is how we can implement it:
 ```lua
 local dss =game:GetService("DataStoreService")
 local MyDs = dss:GetDataStore("MyStore")
@@ -351,15 +351,15 @@ end)
         end
     end)
     ```
-    this is wrong because task.spawn makes it so that the the saving process doesn't yield, but we need it to yield. If you want to do it correctly you can do it like this
+    this is wrong because task.spawn makes it so that the saving process doesn't yield, but we need it to yield. If you want to do it correctly you can do it like this
     ```lua
     game:BindToClose(function()
         local players = game.Players:GetPlayers()
-        local amt = #players -- how many players needs to be saved
-        local count = 0 -- how many players has been saved
+        local amt = #players -- how many players need to be saved
+        local count = 0 -- how many players have been saved
         for _,Player in players do
             task.spawn(function() 
-            -- makes it so that everyone save at the same time instead of 1 by 1
+            -- makes it so that everyone saves at the same time instead of 1 by 1
                 save(Player)
                 count += 1
                 -- when player is done saving increase
@@ -380,10 +380,10 @@ end)
             -- makes it so that everyone save at the same time instead of 1 by 1
                 save(Player)
                 count += 1
-                -- when player is done saving increase
+                -- When player is done saving increase
                 if count == amt then
                     coroutine.resume(thread)
-                    -- if its the last player, resume the thread
+                    -- if it's the last player, resume the thread
                 end
             end)
         end
@@ -395,8 +395,8 @@ end)
 Animations only work if the game the animation is owned is the same to fix it you will have to upload the animation to the same game owner or group 
 
 ![ani](https://media.discordapp.net/attachments/1097115140924645376/1133659449123410000/togif.gif?width=767&height=367)
-(the green is what will happen)
+(The green is what will happen)
 # Conclusion  
-Hope this helps if you have any more question you can ask in scripting-help. Anyways Good luck out there and don't get joe tagged.
+Hope this helps if you have any more questions you can ask in scripting-help. Anyways Good luck out there and don't get joe tagged.
 
 ![joe](https://media.discordapp.net/attachments/895151830345084949/1129887795138277496/togif.gif?width=360&height=96)
