@@ -7,11 +7,16 @@
 local cs = game:GetService("CollectionService") 
 local part = Instance.new("Part",workspace) 
 part:AddTag("MyTag") 
+print(part:HasTag("MyTag")) --> true
 print(cs:GetTagged("MyTag")) --> {Part}
  ```
-## RemoveTag(tag: string):void
-This method removes the a tag set to the instance.
 
+## HasTag(tag: string): boolean
+returns true/false if the instance has the give tag
+## RemoveTag(tag: string): void
+This method removes the a tag set to the instance.
+## Clone(): Instance
+Creates a Copy of the Instance and its Children. The Parent of the cloned Instance will be set to nil. 
 ## Destroy(): void
 Sets the Parent property to nil, but unlike the Remove() method, Destroy() locks the parent and disconnects all connections. This will also call the Destroy methods of the children as well.
 
@@ -92,4 +97,5 @@ print(part:IsA("Part")) --> true, Part is a Part
 print(part:IsA("BasePart")) --> true, Part is a sub-class of BasePart
 print(part:IsA("Model")) --> false, part is not a model  
 ```
+
 
