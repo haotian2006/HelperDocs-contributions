@@ -133,7 +133,18 @@ To open microprofiler on the client press ctrl-shift-f6. To pause press ctrl-P, 
 ### Using the Debug Library
 You can use profilebegin to help find how long your tasks takes take this function:
 ```lua
-function tasks.calculatePrimesFrom(from,to)
+local function is_prime(n)
+    if n <= 1 then
+        return false
+    end
+    for i = 2, math.sqrt(n) do
+        if n % i == 0 then
+            return false
+        end
+    end
+    return true
+end
+local function calculatePrimesFrom(from,to)
     debug.profilebegin("primes")
     local primes = {}
     for i = from,to do
@@ -142,5 +153,17 @@ function tasks.calculatePrimesFrom(from,to)
     debug.profileend()
     return primes
 end
+calculatePrimesFrom(0,10000)
 ```
-This will allow you to see how long primes take![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/primes.png)
+This will allow you to see how long primes take
+![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/primes.png)
+which you can see here takes 1.313 ms
+
+!!!info How to look for profiles
+    Profiles will have a unique color depending on the name, so each profile will have the each color each time. To look for a profile look for colored boxes that stand out more. Ex:
+    ![Alt text](image-3.png)
+    But if your profiles last very short you can sort them by going to ```Groups``` and disabling [ALL] and enabling just Script and it will make it easier to spot
+    ![Alt text](image-4.png)
+    Some other groups I recommend enabling is ```Lua``` and ```TaskQueue```. Lua will display the Scripts while TaskQueue will display stuff like the Sleep timer. 
+## Why multithread
+Multithreading can help increase performance by a lot take the Prime example shown above. 
