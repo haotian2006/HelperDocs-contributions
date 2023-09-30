@@ -1,41 +1,25 @@
 #Parallel luau
 Parallel Luau is a way of achieving real multithreading in roblox using the Actor instance.
 
-
-
-
 !!!info What is Multithreading
     Multithreading is a way of running multiple threads at the same time. Base Lua does not have this feature and when you use task.spawn or coroutines it is not really multithreading. The function is still only running on a single thread but Lua makes it so it looks like it is running at the same time
 
-
-
-
 ## Actors
 Actors is an Instance that allows scripts under that Actor to run in Parallel.
-
-
-
 
 !!!warning Actors and Modules
     The Memory under Actors will not be the same so when you require a module a different table will be returned (if your module returns a table) than in the main Thread. This means you can't use modules to transfer data between Actors.
 
     ```lua
-   
     --Script1
     local module = require(...)
     module.X = 1
     print(module.X) --> 1
 
-
-
-
     --Script2
     local module = require(...)
     task.wait(1)
     print(module.X) --> 1
-
-
-
 
     --Script Under Actor
     local module = require(...)
