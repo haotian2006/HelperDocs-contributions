@@ -18,6 +18,7 @@ Actors is an Instance that allows scripts under that Actor to run in Parallel.
 
 !!!warning Actors and Modules
     The Memory under Actors will not be the same so when you require a module a different table will be returned (if your module returns a table) than in the main Thread. This means you can't use modules to transfer data between Actors.
+
     ```lua
    
     --Script1
@@ -67,9 +68,6 @@ Actor:BindToMessage("myKey", function(data)
     print(data)
 end)
 
-
-
-
 Actor:BindToMessageParallel("myKey", function(data)
     print(data)
 end)
@@ -86,10 +84,9 @@ print(SharedTable.X) --> 1
 ```
 !!!Warning Thread Safety
     When using SharedTable you could have race conditions that can cause unwanted behaviors. If you want to know more about Thread Safety you can scroll down
+
 ###Bindables
 One of the best ways right now (9/29/2023) to send data between threads is using Bindables as they are almost 4x more efficient than SharedTables.
-
-
 
 
 ```lua
@@ -97,8 +94,6 @@ One of the best ways right now (9/29/2023) to send data between threads is using
 local Actor = ...
 local BindableFunction = Actor.Bindable -- assuming you have an event/function parented to the Actor
 local data = BindableFunction:Invoke("DoSomething")
-
-
 
 
 --//Actor Script
@@ -111,8 +106,8 @@ end
 ```
 !!!info Tables and Bindables
     When Sending/Returning Tables, avoid large dictionaries if you can. If possible try to convert dictionaries into arrays. Another thing is if your array is going to consist of Strings that are showing up more than once you could send/return two tables, the data table, and a key table.
-    ```lua
 
+    ```lua
 
     --//before
     local data = {
@@ -142,6 +137,7 @@ end
     --or
     return {data,key}
     ```
+
     This is much more efficient then as it's faster to Serialize numbers than it is for strings. And the size of the data being sent over is lower as well. (this can also apply to remotes)
 
 
@@ -152,27 +148,16 @@ This type of communication uses the Instances under the game and modifying/readi
 ## Thread Safety
 Thread Safety is the avoidance of race conditions, Which happens when multiple threads try to read and write to a shared resource causing unwanted behaviors. When using Parallel lua with roblox's [DataModel](https://create.roblox.com/docs/en-us/reference/engine/classes/DataModel). Roblox already has Thread Safety implemented into its Instances. Roblox has 4 Safety Levels: Unsafe, Read Parallel, Local Safe, and Safe. You can tell if a function/property has one of these tags by looking at the Roblox's API. If it has no tags then it defaults to UnSafe.
 
-
-
-
 !!!info Safety Tags
+
     ##### UnSafe
     Functions cannot be called and Properties cannot be read or written (modified) to
-
-
-
 
     ##### Read Parallel
     Properties can be read but not written to
 
-
-
-
     ##### Local Safe
     If the instance was created was created under an actor then that actor can Read and Write to. Other actors can Read but not write. Functions can be called only in that actor.
-
-
-
 
     ##### Safe
     Functions can be called and Properties can be read and written to
@@ -189,24 +174,15 @@ SharedTable.Value = 0
 --Let's say we are trying to add to a key called Value in the SharedTable
 --Each Thread will add 100 to the Value Key
 
-
-
-
 --//Parallel Thread
 for i = 1,100 do
     SharedTable.Value = SharedTable.Value + 1
 end
 
-
-
-
 --//Another Parallel Thread
 for i = 1,100 do
     SharedTable.Value = SharedTable.Value + 1
 end
-
-
-
 
 --//Outside of Parallel (After Parallel Threads ran)
 print(SharedTable.Value) --> This won't always print 200 as both Parallel are writing to The Value at the same time which can overlap
@@ -249,6 +225,7 @@ end
 calculatePrimesFrom(0,10000)
 ```
 This will allow you to see how long primes takes to calculate.
+
 ![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/primes.png)
 which you can see here takes 1.313 ms
 
@@ -298,16 +275,12 @@ What we could have done better here was to split the tasks into smaller tasks an
 On a roblox server, the amount of workers is determined by the maximum player count ([source](https://devforum.roblox.com/t/live-game-servers-do-not-allocate-more-cores-for-parallelized-games/2460052/4?u=haotian2006)). While on the client it depends on the client's device. Workers are just how many threads can be utilized. Every time you run a parallel task the task will go to one of these workers. Roblox will try to balance which Worker should a task go to.
 ![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/workers1.png)
 
-
-
-
 So when determining the number of Actors you want to use it is usually recommended to use more Actors than workers as roblox will balance the tasks between workers.
 ![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/multipleactors.png)
 but avoid using too many or else other problems such as memory will show up.
 
-
 ## Conclusion  
-Parallel Luau is not an easy thing to explain and understand so don't worry if you don't understand. If you want to see the code I used for the Images above make a copy of this [place](https://www.roblox.com/games/14931452798/Parallel-Luau-Example). If you want to learn more about Parallel Luau check out [here](https://create.roblox.com/docs/fr-fr/scripting/multithreading#parallel-programming-model).
+Parallel Luau is not an easy thing to explain and understand so don't worry if you don't understand. If you want to see the code I used for the Images above, make a copy of this [place](https://www.roblox.com/games/14931452798/Parallel-Luau-Example). If you want to learn more about Parallel Luau check out [here](https://create.roblox.com/docs/fr-fr/scripting/multithreading#parallel-programming-model).
 
 
 
