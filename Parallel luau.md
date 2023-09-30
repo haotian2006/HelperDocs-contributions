@@ -25,8 +25,42 @@ Actors is a Instance that allows scripts under that Actor to run in Parallel.
     task.wait(1)
     print(module.X) --> nil 
     ```
+## Communicating Between Threads
+There are current 4 ways to efficiently communicate between threads: Actor Messaging API, Shared Tables, Bindables, or Direct Data Model Communication .
+
+###Actor Messaging API
+The Actor Messaging Api allows a script to receive data from other actors or the main thread. It currently Consists of 3 methods: SendMessage(), BindToMessage(), BindToMessageParallel(). 
+
+##### SendMessage
+Used to Send Messages between threads. First argument would be the key while the rest will be the data to send
+```lua
+local Actor = ...
+workerActor:SendMessage("myKey", "hello world")
+```
+##### BindToMessage(Parallel)
+Used to receive data. If BindToMessageParallel was used then run the code in Parallel. First Parameter is the key while second Parameter is a callback.
+```lua
+local Actor = script:GetActor()
+Actor:BindToMessage("myKey", function(data)
+    print(data) 
+end)
+
+Actor:BindToMessageParallel("myKey", function(data)
+    print(data)
+end)
+```
+###Shared Tables
+[Shared Table](https://create.roblox.com/docs/reference/engine/datatypes/SharedTable) is like a normal table except it's contents is shared between threads. Meaning that if you update a value in one thread, it will also update for other threads. 
+```lua
+local SharedTableRegistry = game:GetService("SharedTableRegistry") 
+local SharedTable = SharedTableRegistry:GetSharedTable("mySharedTable")
+--//Parallel Thread
+SharedTable.X = 1
+--//Another Parallel Thread
+print(SharedTable.X) --> 1
+``` 
 ## Thread Safety
-Thread Safety is the avoidance of data races or race conditions, Which happens when multiple threads try to read and write to a shared resource causing unwanted behaviors. When using Parallel lua with roblox's [DataModel](https://create.roblox.com/docs/en-us/reference/engine/classes/DataModel). Roblox already has Thread Safety implemented into its Instances. Roblox's has 4 Safety Level: Unsafe, Read Parallel, Local Safe, Safe. You can tell if a function/property is has one of these tags by looking at the roblox's API. If it has no tags then it defaults to UnSafe.
+Thread Safety is the avoidance of race conditions, Which happens when multiple threads try to read and write to a shared resource causing unwanted behaviors. When using Parallel lua with roblox's [DataModel](https://create.roblox.com/docs/en-us/reference/engine/classes/DataModel). Roblox already has Thread Safety implemented into its Instances. Roblox's has 4 Safety Level: Unsafe, Read Parallel, Local Safe, Safe. You can tell if a function/property is has one of these tags by looking at the roblox's API. If it has no tags then it defaults to UnSafe.
 
 !!!info Safety Tags
     ##### UnSafe
@@ -41,8 +75,8 @@ Thread Safety is the avoidance of data races or race conditions, Which happens w
     ##### Safe
     Functions can be called and Properties can be read and write to
 
-### Data Races
-Data Races is when a thread read or writes data just as another thread is also writing to that shared Variable, Causing unexpected output. 
+### Race Conditions
+Race Conditions is when a thread read or writes data when another thread is not finish computing that data, causing data to overlap or create unexpected behaviors. 
 ```lua
 --Example
 local SharedTable = ...
@@ -61,8 +95,11 @@ for i = 1,100 do
 end
 
 --//Outside of Parallel (After Parallel Threads ran)
-print(SharedTable.Value) --> This won't always print 200 as both Parallel are writing to The Value at the same time which can over lap
+print(SharedTable.Value) --> This won't always print 200 as both Parallel are writing to The Value at the same time which can overlapping
 ```
 !!!info More Explanation
-    The Reason why its happening can be shown with this diagram. If you look at Value, each time a thread read and writes it is reading and writing at the same time (this will not always happen) so Value will only update
-    ![Data Races](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/ThreadSafety.png)
+    The Reason why its happening can be shown with this diagram.
+    ![Data Races](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/ThreadSafety_.png)
+    If you look at Value, each time a thread read and writes it is reading and writing at the same time (this will not always happen). So it means that if both Threads run a for loop increase Value by 100, Value will not be 200 most of the time. 
+### Avoiding Race Conditions
+When working with the DataModel roblox already implemented Thread Safety as shown above. Otherwise what you can do is combine the data in a Synchronized state so there is a lesser chance of data overlapping with each other or if you are working with shared table use the functions [increment()](https://create.roblox.com/docs/reference/engine/datatypes/SharedTable#increment) or [update()](https://create.roblox.com/docs/reference/engine/datatypes/SharedTable#update) to update data as it does an atomic update to the values.
