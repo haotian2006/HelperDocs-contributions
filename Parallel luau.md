@@ -118,7 +118,7 @@ end
         [4] = 2,
         [5] = 2,          
     }
-    --to get the value of an index you can do key[valueAtIndex] to get the value
+    --to get the value of an index you can do key[valueAtIndex]
     return data,key
     --or
     return {data,key}
@@ -171,7 +171,9 @@ for i = 1,100 do
 end
 
 --//Outside of Parallel (After Parallel Threads ran)
-print(SharedTable.Value) --> This won't always print 200 as both Parallel are writing to The Value at the same time which can overlap
+print(SharedTable.Value) 
+--> This won't always print 200 as both Parallel are writing to The Value 
+--at the same time which can overlap
 ```
 !!!info More Explanation
     The reason why it's happening can be shown in this diagram.
