@@ -70,7 +70,7 @@ print(SharedTable.X) --> 1
     When using SharedTable you could have race conditions that can cause unwanted behaviors. If you want to know more about Thread Safety you can scroll down
 
 ### Bindables
-One of the best ways right now (9/29/2023) to send data between threads is using Bindables as they are almost 4x more efficient than SharedTables.
+One of the best ways currently (In my Opinion) to send data between threads is using Bindables as they are almost 4x more efficient than SharedTables.
 
 
 ```lua
