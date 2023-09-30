@@ -76,7 +76,9 @@ One of the best ways right now (9/29/2023) to send data between threads is using
 ```lua
 --//main Thread
 local Actor = ...
-local BindableFunction = Actor.Bindable -- assuming you have an event/function parented to the Actor
+local BindableFunction = Actor.Bindable 
+-- assuming you have an event/function parented to the Actor
+
 local data = BindableFunction:Invoke("DoSomething")
 
 
