@@ -26,7 +26,7 @@ Actors is a Instance that allows scripts under that Actor to run in Parallel.
     print(module.X) --> nil 
     ```
 ## Communicating Between Threads
-There are current 4 ways to efficiently communicate between threads: Actor Messaging API, Shared Tables, Bindables, or Direct Data Model Communication .
+There are current 4 ways to efficiently communicate between threads: Actor Messaging API, Shared Tables, Bindables, or Direct Data Model Communication.
 
 ###Actor Messaging API
 The Actor Messaging Api allows a script to receive data from other actors or the main thread. It currently Consists of 3 methods: SendMessage(), BindToMessage(), BindToMessageParallel(). 
@@ -59,6 +59,30 @@ SharedTable.X = 1
 --//Another Parallel Thread
 print(SharedTable.X) --> 1
 ``` 
+!!!Warning Thread Safety
+    When using SharedTable you could have race conditions which can cause unwanted behaviors. If you want to know more about Thread Safety you can scroll down
+###Bindables
+One of the best ways right now (9/29/2023) to send data between threads is using Bindables as they are almost 4x more efficient then SharedTables. 
+
+```lua
+--//main Thread
+local Actor = ...
+local BindableFunction = Actor.Bindable -- assuming you have an event/function parented to the Actor
+local data = BindableFunction:Invoke("DoSomething")
+
+--//Actor Script
+local Actor = script:GetActor()
+local BindableFunction = Actor.Bindable
+BindableFunction.OnInvoke(data)
+    task.desynchronized() -- runs in parallel 
+    return doSomething(data)
+end
+```
+!!!info Tables and Bindables
+    When Sending/Returning Tables, avoid large dictionaries if you can. If possible try to convert dictionaries into arrays. 
+
+### Direct Data Model Communication
+This type of communication uses the Instances under game and modifying/reading their properties. However, to maintain thread-safety roblox has systems that disallows threads that are desynchronized to read/write to the Instances.  
 ## Thread Safety
 Thread Safety is the avoidance of race conditions, Which happens when multiple threads try to read and write to a shared resource causing unwanted behaviors. When using Parallel lua with roblox's [DataModel](https://create.roblox.com/docs/en-us/reference/engine/classes/DataModel). Roblox already has Thread Safety implemented into its Instances. Roblox's has 4 Safety Level: Unsafe, Read Parallel, Local Safe, Safe. You can tell if a function/property is has one of these tags by looking at the roblox's API. If it has no tags then it defaults to UnSafe.
 
@@ -103,3 +127,7 @@ print(SharedTable.Value) --> This won't always print 200 as both Parallel are wr
     If you look at Value, each time a thread read and writes it is reading and writing at the same time (this will not always happen). So it means that if both Threads run a for loop increase Value by 100, Value will not be 200 most of the time. 
 ### Avoiding Race Conditions
 When working with the DataModel roblox already implemented Thread Safety as shown above. Otherwise what you can do is combine the data in a Synchronized state so there is a lesser chance of data overlapping with each other or if you are working with shared table use the functions [increment()](https://create.roblox.com/docs/reference/engine/datatypes/SharedTable#increment) or [update()](https://create.roblox.com/docs/reference/engine/datatypes/SharedTable#update) to update data as it does an atomic update to the values.
+
+## Using Microprofiler 
+To open microprofiler on the client press ctrl-shift-f6. To pause press ctrl-P, If it opens and object viewer press ctrl-shift-f6 twice to reopen it and press ctrl-P again.
+### Debug.profilebegin
