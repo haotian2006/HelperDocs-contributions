@@ -166,7 +166,9 @@ which you can see here takes 1.313 ms
     ![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/primes2.png)
     Some other groups I recommend enabling is ```Lua``` and ```TaskQueue```. Lua will display the Scripts while TaskQueue will display stuff like the Sleep timer. 
 ### Accessing MicroProfiler for Server
-To see the microprofiler of a server 
+To see the microprofiler of a server you would need to go to Developer Console (f9) and go to the ```MicroProfiler``` tab.
+![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/serverMP.png)
+After that I recommend setting ```Frames Per Second``` to 60 and ```Seconds to Record``` to 4 (maximum time). And to Record press ```Start Recording```. After it is done Recording it will display a path which it is saved in. Follow that and you can view the data in a browser. 
 ## Why multithread
 Multithreading can help increase performance by a lot. For example if we try to calculate the primes from 0-100000 it will take the server 
 ![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/p1.png)
