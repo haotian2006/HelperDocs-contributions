@@ -130,4 +130,17 @@ When working with the DataModel roblox already implemented Thread Safety as show
 
 ## Using Microprofiler 
 To open microprofiler on the client press ctrl-shift-f6. To pause press ctrl-P, If it opens and object viewer press ctrl-shift-f6 twice to reopen it and press ctrl-P again.
-### Debug.profilebegin
+### Using the Debug Library
+You can use profilebegin to help find how long your tasks takes take this function:
+```lua
+function tasks.calculatePrimesFrom(from,to)
+    debug.profilebegin("primes")
+    local primes = {}
+    for i = from,to do
+        table.insert(primes,is_prime(i))
+    end
+    debug.profileend()
+    return primes
+end
+```
+This will allow you to see how long primes take![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/primes.png)
