@@ -10,6 +10,7 @@ Actors is a Instance that allows scripts under that Actor to run in Parallel.
 !!!warning Actors and Modules
     The Memory under Actors will not be the same so when you require a module a different table will be returned (if your module returns a table) then in the main Thread. This means you can't use modules to transfer data between Actors. 
     ```lua
+    
     --Script1
     local module = require(...)
     module.X = 1
@@ -179,5 +180,11 @@ But if we split the tasks into 8 separate tasks
 each task only takes about 4ms and since they are running in parallel to each other calculating 100000 primes only takes 4ms in total. 
 
 ## Utilizing Parallel Luau properly
-When using Parallel Luau avoid yielding threads with wait or coroutine. Because when you use task.wait it will bring it out of parallel and tasks that are too long will cause the main Thread (not to be confused with the Main script) will display the ```sleep``` timer because one of the tasks that is in parallel is not finished forcing it to wait. 
-![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/sleep.png)  
+When using Parallel Luau avoid yielding threads with wait or coroutine. Because when you use task.wait it will bring it out of parallel and avoid long tasks as will cause the main Thread (not to be confused with the Main script in the Image) will display the ```sleep``` timer because one of the tasks that is in parallel is not finished forcing it to wait. 
+![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/sleep.png)
+
+### How much actors should you use
+On a roblox server, the amount of workers is determined by maximum player count ([source](https://devforum.roblox.com/t/live-game-servers-do-not-allocate-more-cores-for-parallelized-games/2460052/4?u=haotian2006)). While on the client it depends on the client's device. Workers are just how much threads can be utilized. Every time you run a parallel task the task will go to one of these workers. Roblox will try to balance which Worker should a task go to. 
+![Alt text](image-2.png) 
+If you have more Actors then workers roblox will run multiple tasks on a worker. 
+![Alt text](image-3.png)
