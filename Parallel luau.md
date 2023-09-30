@@ -99,7 +99,7 @@ print(SharedTable.Value) --> This won't always print 200 as both Parallel are wr
 ```
 !!!info More Explanation
     The Reason why its happening can be shown with this diagram.
-    ![Data Races](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/ThreadSafety_.png)
+    ![Race Conditions](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/ThreadSafety_.png)
     If you look at Value, each time a thread read and writes it is reading and writing at the same time (this will not always happen). So it means that if both Threads run a for loop increase Value by 100, Value will not be 200 most of the time. 
 ### Avoiding Race Conditions
 When working with the DataModel roblox already implemented Thread Safety as shown above. Otherwise what you can do is combine the data in a Synchronized state so there is a lesser chance of data overlapping with each other or if you are working with shared table use the functions [increment()](https://create.roblox.com/docs/reference/engine/datatypes/SharedTable#increment) or [update()](https://create.roblox.com/docs/reference/engine/datatypes/SharedTable#update) to update data as it does an atomic update to the values.
