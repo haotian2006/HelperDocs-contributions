@@ -156,14 +156,20 @@ end
 calculatePrimesFrom(0,10000)
 ```
 This will allow you to see how long primes take
-![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/primes.png)
+![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/primes.png) 
 which you can see here takes 1.313 ms
 
 !!!info How to look for profiles
     Profiles will have a unique color depending on the name, so each profile will have the each color each time. To look for a profile look for colored boxes that stand out more. Ex:
-    ![Alt text](image-3.png)
+    ![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/primes1.png)
     But if your profiles last very short you can sort them by going to ```Groups``` and disabling [ALL] and enabling just Script and it will make it easier to spot
-    ![Alt text](image-4.png)
+    ![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/primes2.png)
     Some other groups I recommend enabling is ```Lua``` and ```TaskQueue```. Lua will display the Scripts while TaskQueue will display stuff like the Sleep timer. 
 ## Why multithread
-Multithreading can help increase performance by a lot take the Prime example shown above. 
+Multithreading can help increase performance by a lot. For example if we try to calculate the primes from 0-100000 it will take the server 
+![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/p1.png)
+The tasks takes 26.920ms to calculate which is going to cause performance issues as each frame lasts 1/60 seconds which is ~16ms and since the task takes over 16ms the server will lag for 10ms. 
+
+But if we split the tasks into 8 separate tasks 
+![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/p8.png)
+each task only takes about 4ms and since they are running in parallel to each other calculating 100000 primes only takes 4ms in total. 
