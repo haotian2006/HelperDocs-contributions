@@ -63,3 +63,6 @@ end
 --//Outside of Parallel (After Parallel Threads ran)
 print(SharedTable.Value) --> This won't always print 200 as both Parallel are writing to The Value at the same time which can over lap
 ```
+!!!info More Explanation
+    The Reason why its happening can be shown with this diagram. If you look at Value, each time a thread read and writes it is reading and writing at the same time (this will not always happen) so Value will only update
+    ![Data Races](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/ThreadSafety.png)
