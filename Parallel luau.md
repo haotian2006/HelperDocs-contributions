@@ -185,6 +185,6 @@ When using Parallel Luau avoid yielding threads with wait or coroutine. Because 
 
 ### How much actors should you use
 On a roblox server, the amount of workers is determined by maximum player count ([source](https://devforum.roblox.com/t/live-game-servers-do-not-allocate-more-cores-for-parallelized-games/2460052/4?u=haotian2006)). While on the client it depends on the client's device. Workers are just how much threads can be utilized. Every time you run a parallel task the task will go to one of these workers. Roblox will try to balance which Worker should a task go to. 
-![Alt text](image-2.png) 
+![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/workers1.png) 
 If you have more Actors then workers roblox will run multiple tasks on a worker. 
-![Alt text](image-3.png)
+![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/multipleactors.png)
