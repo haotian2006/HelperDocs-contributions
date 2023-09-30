@@ -1,4 +1,4 @@
-#Parallel luau
+# Parallel luau
 Parallel Luau is a way of achieving real multithreading in roblox using the Actor instance.
 
 !!!info What is Multithreading
@@ -32,7 +32,7 @@ There are currently 4 ways to efficiently communicate between threads: Actor Mes
 
 
 
-###Actor Messaging API
+### Actor Messaging API
 The Actor Messaging API allows a script to receive data from other actors or the main thread. It currently consists of 3 methods: SendMessage(), BindToMessage(), and BindToMessageParallel().
 
 
@@ -56,7 +56,7 @@ Actor:BindToMessageParallel("myKey", function(data)
     print(data)
 end)
 ```
-###Shared Tables
+### Shared Tables
 [Shared Table](https://create.roblox.com/docs/reference/engine/datatypes/SharedTable) is like a normal table except its contents are shared between threads. This means that if you update a value in one thread, it will also update for other threads.
 ```lua
 local SharedTableRegistry = game:GetService("SharedTableRegistry")
@@ -69,7 +69,7 @@ print(SharedTable.X) --> 1
 !!!Warning Thread Safety
     When using SharedTable you could have race conditions that can cause unwanted behaviors. If you want to know more about Thread Safety you can scroll down
 
-###Bindables
+### Bindables
 One of the best ways right now (9/29/2023) to send data between threads is using Bindables as they are almost 4x more efficient than SharedTables.
 
 
