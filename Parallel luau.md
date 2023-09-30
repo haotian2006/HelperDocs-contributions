@@ -246,7 +246,7 @@ each task only takes about 4ms and since they are running in parallel to each ot
 
 
 ## Utilizing Parallel Luau properly
-When using Parallel Luau it is recommended to separate tasks into smaller tasks. So let's say you have a task that takes 5ms to compute on a single thread. What you can do is split the tasks into 5 threads, Each chunk taking ~1 ms to compute, Saving 4 ms. Also when using Parallel Luau avoid yielding threads with wait or coroutine. Because when you use task.wait it will bring it out of parallel and avoid long tasks as will cause the main Thread (not to be confused with the Main script in the Image) will display the ```sleep``` timer because one of the tasks that is in parallel is not finished forcing it to wait.
+When using Parallel Luau it is recommended to separate tasks into smaller tasks. So let's say you have a task that takes 5ms to compute on a single thread. What you can do is split the tasks into 5 threads, Each chunk taking ~1 ms to compute, Saving 4 ms. Also when using Parallel Luau avoid yielding threads with wait or coroutine. Because when you use task.wait it will bring it out of parallel. And it is also recommended to Avoid long tasks as it will cause the main Thread (not to be confused with the Main script in the Image) to wait for that parallel task to finish. Show below with the ```Sleep``` timer.
 ![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/sleep.png)
 What we could have done better here was to split the tasks into smaller tasks and use more Actors.
 
