@@ -167,7 +167,7 @@ which you can see here takes 1.313 ms
     Some other groups I recommend enabling is ```Lua``` and ```TaskQueue```. Lua will display the Scripts while TaskQueue will display stuff like the Sleep timer. 
 ### Accessing MicroProfiler for Server
 To see the microprofiler of a server you would need to go to Developer Console (f9) and go to the ```MicroProfiler``` tab.
-![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/serverMP.png)
+![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/serverMP.png) 
 After that I recommend setting ```Frames Per Second``` to 60 and ```Seconds to Record``` to 4 (maximum time). And to Record press ```Start Recording```. After it is done Recording it will display a path which it is saved in. Follow that and you can view the data in a browser. 
 ## Why multithread
 Multithreading can help increase performance by a lot. For example if we try to calculate the primes from 0-100000 it will take the server 
@@ -177,3 +177,7 @@ The tasks takes 26.920ms to calculate which is going to cause performance issues
 But if we split the tasks into 8 separate tasks 
 ![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/p8.png)
 each task only takes about 4ms and since they are running in parallel to each other calculating 100000 primes only takes 4ms in total. 
+
+## Utilizing Parallel Luau properly
+When using Parallel Luau avoid yielding threads with wait or coroutine. Because when you use task.wait it will bring it out of parallel and tasks that are too long will cause the main Thread (not to be confused with the Main script) will display the ```sleep``` timer because one of the tasks that is in parallel is not finished forcing it to wait. 
+![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/sleep.png)  
