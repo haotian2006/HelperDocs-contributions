@@ -165,6 +165,8 @@ which you can see here takes 1.313 ms
     But if your profiles last very short you can sort them by going to ```Groups``` and disabling [ALL] and enabling just Script and it will make it easier to spot
     ![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/primes2.png)
     Some other groups I recommend enabling is ```Lua``` and ```TaskQueue```. Lua will display the Scripts while TaskQueue will display stuff like the Sleep timer. 
+### Accessing MicroProfiler for Server
+To see the microprofiler of a server 
 ## Why multithread
 Multithreading can help increase performance by a lot. For example if we try to calculate the primes from 0-100000 it will take the server 
 ![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/p1.png)
