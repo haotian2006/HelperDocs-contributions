@@ -281,8 +281,8 @@ On a roblox server, the amount of workers is determined by the maximum player co
 
 So when determining the number of Actors you want to use it is usually recommended to use more Actors than workers as roblox will balance the tasks between workers.
 
-![Alt text](https://raw.githubusercontent.com/haotian2006/
-HelperDocs-contributions/master/Images/multipleactors.png)
+![Alt text](https://raw.githubusercontent.com/haotian2006/HelperDocs-contributions/master/Images/multipleactors.png)
+
 but avoid using too many or else other problems such as memory will show up.
 
 ## Conclusion  
