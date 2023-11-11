@@ -46,6 +46,7 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
+  - toc
 
   - admonition
   - pymdownx.details

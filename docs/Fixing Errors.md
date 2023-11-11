@@ -1,7 +1,7 @@
 # Fixing Errors 
 This section will go over some basics on how to fix or find errors
 
-# Checking Output 
+## Checking Output 
 Usually, if your code doesn't run then it might be because the code has errored.
 
 To open output you go to View -> Output
@@ -59,10 +59,10 @@ to fix this make sure that the argument is being defined correctly or is the rig
 this means that the value you are trying to send cannot be converted into the object the function wants. To fix this make sure that the data type is the correct one.
 ###  <span style="color:red"> Expected ')' (to close '(' at column [number]), got eof </span>
 This is a syntax error. it means that you either have extra parentheses or lack one. To fix this look for where the lines are underlined in red as roblox catches syntax errors before the game is being run.
-# Print Debugging 
+## Print Debugging 
 Print debugging mainly consists of adding print statements to find out what is wrong this is mainly used if no errors are showing up in the output
 
-## use case
+### use case
 
 let's say we have a script set up like this
 ```lua
@@ -118,10 +118,10 @@ end
 ```
 From this, you can tell that y is 4 not 0 so from this you would most likely look into how y is being assigned which in this case can tell us that something must be wrong with the getY function 
 
-# visualize debugging
+## visualize debugging
 This type of debugging can be using parts or other methods to visualize the problem this can be used if using prints doesn't really tell you what's wrong 
 
-## use case
+### use case
 Let's say we are doing some raycasting but the ray isn't hitting anything 
 ```lua
 local green = workspace.PartA
@@ -180,7 +180,7 @@ RaycastResult{PartB @ -4.82407379, 11.2030563, 18.3839722; normal = 0, 0, -1; ma
 
 ![placeholder](https://camo.githubusercontent.com/7c2be402e3b54e2fb5a0d28d493a4e61a45bfae3fb113fb008317f7f571d5532/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333031353930363238393635353837382f696d6167652e706e673f77696474683d363231266865696768743d343335)
 
-# Making your code more readable/ Remaking it
+## Making your code more readable/ Remaking it
 Sometimes making your code more readable will help with debugging 
 ex:
 given this script it might be a bit annoying to figure out what wrong 
@@ -230,7 +230,7 @@ end
     ```
     as the condition is just a boolean 
 
-# Using google 
+## Using google 
 When you get an error message that you don't know or understand, what you can do is go to google.com and search for the error message. Usually, you will find a devform post that has the same error and the solution. Another way to help enhance the search is by using "". This tells google to look for that keyword. Sometimes you might not get the results you're looking for, for example, this error
 
 ![placeholder](https://camo.githubusercontent.com/07249c9dc85738d404d508718bdee137c8183342863c791741e08d63c609fe9f/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333432323133393734343133373235372f696d6167652e706e673f77696474683d353532266865696768743d3234)
@@ -244,14 +244,14 @@ So what we can do here is maybe change the wording or adding roblox into the sea
 ![asaada](https://camo.githubusercontent.com/3e62fd80d0faa8f0d72b030707cb541fe92a996ac046572cdc1bb97b0b750102/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333432333039353536373239383631302f696d6167652e706e673f77696474683d373637266865696768743d363638)
 
 and there we go.
-# Using roblox debugger
+## Using roblox debugger
 Another way of debugging is using tools roblox provided such as breakpoints, watch, and call stack. But most of the time you won't really be needing this. but if you want you can find out how to use them [here](https://create.roblox.com/docs/studio/debugging).
 
-# Common mistakes 
+## Common mistakes 
 This section is just a list of common mistakes people tend to do
 
-## 1. Using starter Gui instead of playergui
-### StarterGui
+### 1. Using starter Gui instead of playergui
+#### StarterGui
 StarterGui is a container that is under Game. Its purpose is to act like a container to hold your guis before they are cloned into the PlayerGui. When a player joins roblox will take everything that is currently in StarterGui and clone them into the players PlayerGui.
 https://create.roblox.com/docs/reference/engine/classes/StarterGui
 
@@ -262,7 +262,7 @@ local StarterGui = game.StarterGui
 local ScreenGui = StarterGui:WaitForChild("ScreenGui")
 ScreenGui.Enabled = true --!! THIS WILL NOT WORK !!
  ```
-### PlayerGui
+#### PlayerGui
 
 PlayerGui is a container that is under the player that joined. Each player will have their own PlayerGui which other players will **not** be able to see. The server will be able to see it but its is **not recommended** to let the server modify anything in PlayerGui. PlayerGui is what the client actually sees.
 https://create.roblox.com/docs/reference/engine/classes/PlayerGui
@@ -280,16 +280,16 @@ local ScreenGui = PlayerGui:WaitForChild("ScreenGui")
 ScreenGui.Enabled = true 
  ```
 
- ## 2. LocalScripts in the wrong places
+ ### 2. LocalScripts in the wrong places
 Another common mistake is having LocalScripts in the wrong place such as having a LocalScript in ServerScriptService. LocalScripts run in a client environment such as StarterPlayerScripts, ServerScriptService is on the server
 
 ![a](https://camo.githubusercontent.com/23e591c5e1aa20bca4fb4fdf7014d5cec1fc993b2047fd95c37a5744c6538e02/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333432383733303839393933353235322f696d6167652e706e673f77696474683d373637266865696768743d323531)
 https://create.roblox.com/docs/reference/engine/classes/LocalScript
 
-## 3. Trying to access ServerStorage from the client
+### 3. Trying to access ServerStorage from the client
 ServerStorage is a Storage for the server to see not the client. If you want to store something store it in ReplicatedStorage
 
-## 4. Indirect Change
+### 4. Indirect Change
 Indirect Change is when you are changing the variable, not the actual value, for example:
 
 ```lua
@@ -324,7 +324,7 @@ part.Position = Vector3.new(1,2,3)
 ```
 
 
-## 5. Not having a BindToClose in their DataStoreSaving script
+### 5. Not having a BindToClose in their DataStoreSaving script
 A very common mistake people tend to make is not having a BindToClose in their Datastore script
 
 Here is an example script:
@@ -407,12 +407,12 @@ end)
         coroutine.yield() -- yields the thread
     end)
     ```
-## 6. Animations working in Studio but not In game
+### 6. Animations working in Studio but not In game
 Animations only work if the game the animation is owned is the same to fix it you will have to upload the animation to the same game owner or group 
 
 ![ani](https://camo.githubusercontent.com/53d146fc05eabc961a0d5da262c415d7eee44d8919079e880cc5d830b4da16e5/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313133333635393434393132333431303030302f746f6769662e6769663f77696474683d373637266865696768743d333637)
 (The green is what will happen)
-# Conclusion  
+## Conclusion  
 Hope this helps if you have any more questions you can ask in scripting-help. Anyways Good luck out there and don't get joe tagged.
 
 ![joe](https://camo.githubusercontent.com/d05cb3e2d45b76011b5c637611d9b54595536704a489021a691733c8e7c23059/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f3839353135313833303334353038343934392f313132393838373739353133383237373439362f746f6769662e6769663f77696474683d333630266865696768743d3936)
