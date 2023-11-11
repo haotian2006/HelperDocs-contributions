@@ -5,25 +5,29 @@ This section will go over some basics on how to fix or find errors
 Usually, if your code doesn't run then it might be because the code has errored.
 
 To open output you go to View -> Output
-![Alt text](https://media.discordapp.net/attachments/1090554268492247103/1144376169463042178/image.png?width=767&height=127)
+
+![Alt text](https://camo.githubusercontent.com/c49980899ae8f35c159d72ed5921a170d267031a94311029b25d222c7becdf44/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039303535343236383439323234373130332f313134343337363136393436333034323137382f696d6167652e706e673f77696474683d373637266865696768743d313237)
 
 
->Another useful tool is the Script Analysis, what it does is show warnings/errors 
+Another useful tool is the Script Analysis, what it does is show warnings/errors 
 (mainly [syntax](https://www.sciencedirect.com/topics/engineering/syntax-error) related) while you are editing the script. It is directly below the Output
 
 
 To see if there is an error you will see a message that is red like this one
-![error](https://media.discordapp.net/attachments/1090554268492247103/1144377810933260418/image.png?width=767&height=104)
+
+![error](https://camo.githubusercontent.com/5ed3c63737852d58fd4c1734230b043b1a387a220f4f362d80439faf7e055373/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039303535343236383439323234373130332f313134343337373831303933333236303431382f696d6167652e706e673f77696474683d373637266865696768743d313034)
 
 You can click on the error and it will bring you to the line and script that it errored on 
 
 If clicking on it doesn't lead you anywhere and you see this 
-![a](https://media.discordapp.net/attachments/1090554268492247103/1144378615115546724/image.png?width=767&height=103)
+
+![a](https://camo.githubusercontent.com/0946a37370117458fb6f82e47700ea7b30c21f88e8b9f47348439558394d8a57/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039303535343236383439323234373130332f313134343337383631353131353534363732342f696d6167652e706e673f77696474683d373637266865696768743d313033)
 When you hover over it it means that the script it errored in was deleted.
 What you can do is click on the error while in the game instead of after stopping and it should lead you to the right script.
 
 ## Reading errors messages
-![smtidk](https://media.discordapp.net/attachments/1090554268492247103/1144383368163774474/image.png?width=767&height=182)
+
+![smtidk](https://camo.githubusercontent.com/f8ef25c7db728a824a56d6daac6fffcc1c1e8a6c818196e5d0467f9d44ed6d71/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039303535343236383439323234373130332f313134343338333336383136333737343437342f696d6167652e706e673f77696474683d373637266865696768743d313832)
 
 <span style="color:Orange">Time of message: </span> When did it error
 <span style="color:Lime">Script Location: </span> What script did it error on and where is the script
@@ -128,7 +132,8 @@ local ray = workspace:Raycast(green.Position,direction)
 print(ray)
 print(direction)
 ```
-![placeholder](https://media.discordapp.net/attachments/1097115140924645376/1143013121468940299/image.png?width=517&height=410)
+
+![placeholder](https://camo.githubusercontent.com/e658633f9600907164031a15b24197f5346040d4e5e53232ca8e5321663d2f0c/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333031333132313436383934303239392f696d6167652e706e673f77696474683d353137266865696768743d343130)
 ```
 nil
 600.8695068359375, -531.7534790039062, -596.8199462890625
@@ -150,7 +155,8 @@ dir.CFrame = CFrame.lookAt(green.Position+direction/2,green.Position + direction
 dir.Anchored = true
 dir.Parent = workspace
 ```
-![placeholder](https://media.discordapp.net/attachments/1097115140924645376/1143015453329989662/image.png?width=767&height=465)
+
+![placeholder](https://camo.githubusercontent.com/e8a9b6bf0b7c800cc40e804b856f8e6174e87f50119b254574852c5fb653deb7/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333031353435333332393938393636322f696d6167652e706e673f77696474683d373637266865696768743d343635)
 From this we can see that direction is indeed wrong and when we look at how direction is defined we can see that we did (start-goal) when the proper way is (goal - start)
 
 So fixing that and running the code will now give the correct results
@@ -171,7 +177,9 @@ dir.Parent = workspace
 ```
 RaycastResult{PartB @ -4.82407379, 11.2030563, 18.3839722; normal = 0, 0, -1; material = Plastic} 
 ```
-![placeholder](https://media.discordapp.net/attachments/1097115140924645376/1143015906289655878/image.png?width=621&height=435)
+
+![placeholder](https://camo.githubusercontent.com/7c2be402e3b54e2fb5a0d28d493a4e61a45bfae3fb113fb008317f7f571d5532/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333031353930363238393635353837382f696d6167652e706e673f77696474683d363231266865696768743d343335)
+
 # Making your code more readable/ Remaking it
 Sometimes making your code more readable will help with debugging 
 ex:
@@ -206,7 +214,7 @@ If you still don't see what's wrong with it what you can do is just plug values 
 local randomFlag = RandomTor:FindFirstChild("Flag")
 local LocalFlag = LocalTorso:FindFirstChild("Flag")
 local RandomProx = RandomTor:FindFirstChild("ProximityPrompt")
-if (not randomFlag.Value) and (not LocalFlag.Value) then
+if (not randomFlag.Value) and (not LocalFlag.Value) then 
     RandomProx.Enabled = true
 else
     RandomProx.Enabled = false
@@ -224,11 +232,17 @@ end
 
 # Using google 
 When you get an error message that you don't know or understand, what you can do is go to google.com and search for the error message. Usually, you will find a devform post that has the same error and the solution. Another way to help enhance the search is by using "". This tells google to look for that keyword. Sometimes you might not get the results you're looking for, for example, this error
-![placeholder](https://media.discordapp.net/attachments/1097115140924645376/1143422139744137257/image.png?width=552&height=24)
+
+![placeholder](https://camo.githubusercontent.com/07249c9dc85738d404d508718bdee137c8183342863c791741e08d63c609fe9f/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333432323133393734343133373235372f696d6167652e706e673f77696474683d353532266865696768743d3234)
+
 and when we do a Google search we don't get anything that relates to that
-![hi - hao](https://media.discordapp.net/attachments/1097115140924645376/1143422833259724882/image.png?width=713&height=800)
+
+![hi - hao](https://camo.githubusercontent.com/7bc5df6cc26e805e691397d03e116e37ccd6a625b43c087773d68aaf18662c05/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333432323833333235393732343838322f696d6167652e706e673f77696474683d373133266865696768743d383030)
+
 So what we can do here is maybe change the wording or adding roblox into the search to help Google search better
-![asaada](https://media.discordapp.net/attachments/1097115140924645376/1143423095567298610/image.png?width=767&height=668)
+
+![asaada](https://camo.githubusercontent.com/3e62fd80d0faa8f0d72b030707cb541fe92a996ac046572cdc1bb97b0b750102/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333432333039353536373239383631302f696d6167652e706e673f77696474683d373637266865696768743d363638)
+
 and there we go.
 # Using roblox debugger
 Another way of debugging is using tools roblox provided such as breakpoints, watch, and call stack. But most of the time you won't really be needing this. but if you want you can find out how to use them [here](https://create.roblox.com/docs/studio/debugging).
@@ -253,7 +267,7 @@ ScreenGui.Enabled = true --!! THIS WILL NOT WORK !!
 PlayerGui is a container that is under the player that joined. Each player will have their own PlayerGui which other players will **not** be able to see. The server will be able to see it but its is **not recommended** to let the server modify anything in PlayerGui. PlayerGui is what the client actually sees.
 https://create.roblox.com/docs/reference/engine/classes/PlayerGui
 
-![hi](https://media.discordapp.net/attachments/1097115140924645376/1143426421381922907/image.png?width=210&height=122)
+![hi](https://camo.githubusercontent.com/1b1d3c22e1837d57ecca1498a40e5e1d21dbb0a720f6f5f82ee3d504ef9a5fca/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333432363432313338313932323930372f696d6167652e706e673f77696474683d323130266865696768743d313232)
 
 so to fix the given script above we can do this
 
@@ -269,7 +283,7 @@ ScreenGui.Enabled = true
  ## 2. LocalScripts in the wrong places
 Another common mistake is having LocalScripts in the wrong place such as having a LocalScript in ServerScriptService. LocalScripts run in a client environment such as StarterPlayerScripts, ServerScriptService is on the server
 
-![a](https://media.discordapp.net/attachments/1097115140924645376/1143428730899935252/image.png?width=767&height=251)
+![a](https://camo.githubusercontent.com/23e591c5e1aa20bca4fb4fdf7014d5cec1fc993b2047fd95c37a5744c6538e02/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313134333432383733303839393933353235322f696d6167652e706e673f77696474683d373637266865696768743d323531)
 https://create.roblox.com/docs/reference/engine/classes/LocalScript
 
 ## 3. Trying to access ServerStorage from the client
@@ -396,9 +410,9 @@ end)
 ## 6. Animations working in Studio but not In game
 Animations only work if the game the animation is owned is the same to fix it you will have to upload the animation to the same game owner or group 
 
-![ani](https://media.discordapp.net/attachments/1097115140924645376/1133659449123410000/togif.gif?width=767&height=367)
+![ani](https://camo.githubusercontent.com/53d146fc05eabc961a0d5da262c415d7eee44d8919079e880cc5d830b4da16e5/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313039373131353134303932343634353337362f313133333635393434393132333431303030302f746f6769662e6769663f77696474683d373637266865696768743d333637)
 (The green is what will happen)
 # Conclusion  
 Hope this helps if you have any more questions you can ask in scripting-help. Anyways Good luck out there and don't get joe tagged.
 
-![joe](https://media.discordapp.net/attachments/895151830345084949/1129887795138277496/togif.gif?width=360&height=96)
+![joe](https://camo.githubusercontent.com/d05cb3e2d45b76011b5c637611d9b54595536704a489021a691733c8e7c23059/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f3839353135313833303334353038343934392f313132393838373739353133383237373439362f746f6769662e6769663f77696474683d333630266865696768743d3936)
