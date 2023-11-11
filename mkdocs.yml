@@ -52,5 +52,4 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
 plugins:
-  - include-markdown
   - search
