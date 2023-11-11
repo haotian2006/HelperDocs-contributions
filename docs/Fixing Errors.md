@@ -35,7 +35,7 @@ What you can do is click on the error while in the game instead of after stoppin
 <span style="color:yellow">Error Message: </span> What is the error
 <span style="color:White">Environment: </span> is the error on the server, client, or studio
 
-You mainly only need to focus on the Script Location, error line, and the error itself. If it's an error you don't understand you can use Google to search for the error message. There is a section below explaining how to do that
+You mainly only need to focus on the Script Location, error line, and the error itself. If it's an error you don't understand you can use Google to search for the error message. There is a section below explaining how to do that.
 
 ## Common Error Messages
 ### <span style="color:red"> [name] is not a valid member of object </span>
