@@ -7,8 +7,10 @@ Usually, if your code doesn't run then it might be because the code has errored.
 To open output you go to View -> Output
 ![Alt text](https://media.discordapp.net/attachments/1090554268492247103/1144376169463042178/image.png?width=767&height=127)
 
-!!!info 
-    Another useful tool is the Script Analysis, what it does is show warnings/errors (mainly [syntax](https://www.sciencedirect.com/topics/engineering/syntax-error) related) while you are editing the script. It is directly below the Output
+
+>Another useful tool is the Script Analysis, what it does is show warnings/errors 
+(mainly [syntax](https://www.sciencedirect.com/topics/engineering/syntax-error) related) while you are editing the script. It is directly below the Output
+
 
 To see if there is an error you will see a message that is red like this one
 ![error](https://media.discordapp.net/attachments/1090554268492247103/1144377810933260418/image.png?width=767&height=104)
